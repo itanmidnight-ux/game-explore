@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --color-accent-neon: #00f2ff;
+  --color-accent-shadow: #bb00ff;
+  --color-accent-blood: #ff0044;
+}
+
+body {
+  background: #020202;
+  color: #e0e0e0;
+  margin: 0;
+  overflow: hidden;
+  user-select: none;
+  font-family: var(--font-sans);
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@layer utilities {
+  .text-neon-blue {
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.2);
+    color: #00f2ff;
+  }
+  
+  .animate-system-glitch {
+    animation: system-glitch 0.3s infinite;
+  }
+  
+  @keyframes system-glitch {
+    0% { transform: translate(0); text-shadow: -2px 0 #00f2ff, 2px 0 #bb00ff; }
+    25% { transform: translate(-2px, 1px) }
+    50% { transform: translate(2px, -1px); text-shadow: 2px 0 #00f2ff, -2px 0 #bb00ff; }
+    75% { transform: translate(-1px, 1px) }
+    100% { transform: translate(0) }
+  }
+
+  .halo-pulse {
+    animation: halo-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes halo-pulse {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.1); }
+  }
+  
+  .system-scanline {
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 242, 255, 0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+}
+
+
